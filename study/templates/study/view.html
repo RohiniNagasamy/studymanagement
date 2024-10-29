@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Study</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'study/static/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body  style="background-color: black;">
+    <h1  style="color: aliceblue;">Study Details</h1>
+    <table class="table table-primary">
+        <tr>
+            <th>Study ID</th>
+            <td>{{ study.study_id }}</td>
+        </tr>
+        <tr>
+            <th>Study Name</th>
+            <td>{{ study.study_name }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ study.study_description }}</td>
+        </tr>
+        <tr>
+            <th>Phase</th>
+            <td>{{ study.study_phase }}</td>
+        </tr>
+        <tr>
+            <th>Sponsor</th>
+            <td>{{ study.sponsor_name_id }}</td>
+        </tr>
+    </table>
+    <div class="btn-group ">
+        <button type="button" class="btn btn-primary"><a href="{% url 'edit_study' study.pk %}" style="color: white;">Edit</a>
+    </button></div>
+    <div class="btn-group ">
+   <button type="button" class="btn btn-primary"><a href="{% url 'delete_study' study.pk %}" style="color: white;">Delete</a>
+   </button></div>             
+    <div class="btn-group ">
+    <button type="button" class="btn btn-primary"><a href="{% url 'study_list' %}" style="color: white;">Back to Study List</a>
+    </button></div>
+</body>
+</html>

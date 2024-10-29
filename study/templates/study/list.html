@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Study List</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'study/static/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        *{
+            text-decoration: none;
+        }
+        .container{
+            position: relative;
+            top: 150px;
+        }
+        </style>
+</head>
+<body style="background-color: black;">
+    <div class="container">
+    <div class="row-justify-content-center">
+    <div class="row">
+    <div class="col-md-12 text-center"><h1 style="color: aliceblue;position: relative;bottom: 50px;">Study Management</h1></div></div>
+    <div class="row">
+    <div class="col-md-12">
+    <table class="table table-border table-primary">
+        <thead>
+            <tr>
+                <th>Study ID</th>
+                <th>Study Name</th>
+                <th>Study Description</th>
+                <th>Study Phase</th>
+                <th>Sponsor ID</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for study in studies %}
+            <tr>
+                <td>{{ study.study_id }}</td>
+                <td>{{ study.study_name }}</td>
+                <td>{{ study.study_description }}</td>
+                <td>{{ study.study_phase }}</td>
+                <td>{{ study.sponsor_name_id }}</td>
+                <td style="gap:20%;">
+                    <button type="button"> <a href="{% url 'view_study' study.pk %}" style="text-decoration: none;">View </a></button>
+                    <button type="button"> <a href="{% url 'edit_study' study.pk %}" style="text-decoration: none;">Edit</a></button>
+                    <button type="button"> <a href="{% url 'delete_study' study.pk %}" style="text-decoration: none;">Delete</a></button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table></div></div>
+    <div class="btn-group ">
+        <button type="button" class="btn btn-primary" style="position: relative;top: 30px;"><a href="{% url 'add_study' %}" style="color: white;">Add New Study</a></button></div>
+</body>
+</html>
