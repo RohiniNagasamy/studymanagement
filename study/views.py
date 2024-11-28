@@ -4,7 +4,7 @@ from .forms import StudyForm
 
 def study_list(request):
     studies = Study.objects.all()
-    return render(request, 'study/list.html', {'studies': studies})
+    return render(request, 'study/index.html', {'studies': studies})
 
 def add_study(request):
     if request.method == 'POST':
